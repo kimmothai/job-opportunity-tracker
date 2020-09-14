@@ -2,13 +2,13 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:5432/${process.env.DB_NAME}`
+const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
 
 module.exports = {
-  pathPrefix: "/reponame",
+  pathPrefix: "/job-opportunity-tracker",
   siteMetadata: {
-    title: `Job Application Tracker`,
-    description: `Stay updated on your job applications`,
+    title: `Job Opportunity Tracker`,
+    description: `Stay updated on your job opportunities`,
     author: `Kimmo Thai`,
     github: `https://github.com/kimmothai`,
   },
