@@ -5,12 +5,12 @@ require("dotenv").config({
 const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:5432/${process.env.DB_NAME}`
 
 module.exports = {
+  pathPrefix: "/reponame",
   siteMetadata: {
     title: `Job Application Tracker`,
     description: `Stay updated on your job applications`,
     author: `Kimmo Thai`,
     github: `https://github.com/kimmothai`,
-    PASS: `${process.env.GATSBY_PASS}`, // TODO REMOVE
   },
   plugins: [
     {
