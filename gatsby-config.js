@@ -1,10 +1,48 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:5432/${process.env.DB_NAME}`
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Job Application Tracker`,
+    description: `Stay updated on your job applications`,
+    author: `Kimmo Thai`,
+    github: `https://github.com/kimmothai`,
+    PASS: `${process.env.GATSBY_PASS}`, // TODO REMOVE
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: "gatsby-source-pg",
+      options: {
+        connectionString: `${connectionString}`,
+        schema: "public",
+        refetchInterval: 60, // Refetch data every 60 seconds
+      },
+    },
+    {
+      // TODO remove if unused directory
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/images/`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
+      },
+    },
+    {
+      resolve: `gatsby-plugin-theme-ui`,
+      options: {
+        preset: "@theme-ui/preset-funk",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
