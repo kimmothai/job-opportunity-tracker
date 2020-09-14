@@ -1,7 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 
-// import "./layout.css"
 import "./job-table.css"
 
 const JobTable = ({ children }) => {
