@@ -8,5 +8,4 @@ To learn how front and back end interact with each other, and how to use cloud s
 
 ## TO DO
 
-- Add tests
 - Add an About page
